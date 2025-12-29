@@ -1,39 +1,47 @@
-# FaceGuard: AI-Powered Grievance Intelligence Platform
+# AI-Powered Grievance Portal
 
-FaceGuard is an AI-driven grievance analysis and ranking system that ingests public complaints, classifies them using transformer-based NLP, groups similar issues via hybrid clustering, and ranks them by urgency and community support. It is designed for transparent, data-centric decision-making in governance and public service contexts.
+This repository contains an AI-driven grievance portal that ingests public complaints, classifies them using transformer-based NLP, groups similar issues through hybrid clustering, and ranks them by urgency and community support. The system is designed for transparent, data-centric decision-making in governance and public service environments. [file:1105]
 
 ## Tech Stack
 
-- **Frontend:** Streamlit (Python-based web UI for complaint submission, browsing, and support voting)  
-- **Backend:** FastAPI (REST APIs for ingestion, analysis, and retrieval)  
+- **Frontend:** Streamlit web UI for:
+  - Complaint submission
+  - Viewing complaint cards and metrics
+  - Casting “Lend Support” votes on issues [file:1105]
+- **Backend:** FastAPI for:
+  - Complaint ingestion (`/submit_complaint`)
+  - Loading and ranking complaints (`/load_complaints`)
+  - Background analysis jobs (clustering, severity recomputation) [file:1105]
 - **NLP & ML:**
-  - Sentence-BERT / BERT for text embeddings and classification  
-  - Keyword-based heuristic classifier + hybrid fusion  
-  - Robust Isolation Forest and Deep Isolation Forest for anomaly handling  
-  - HDBSCAN for unsupervised clustering of complaints  
+  - BERT / Sentence-BERT for embeddings and text classification [file:1105]
+  - Keyword-matching heuristic classifier
+  - Hybrid fusion layer for final category selection
+  - Robust Isolation Forest + Deep Isolation Forest for anomaly handling
+  - HDBSCAN for unsupervised clustering and pattern detection [file:1105]
 - **Database & Storage:**
-  - PostgreSQL with **pgvector** extension for embedding storage and similarity search  
-  - Tables for grievances, severity metrics, cluster IDs, and support counts  
+  - PostgreSQL with **pgvector** extension for:
+    - Storing complaint embeddings
+    - Performing cosine-similarity search [file:1105]
+  - Structured tables for grievances, severity metrics, support counts, and cluster IDs
 - **Geospatial & External Services:**
-  - Nominatim Geocoding API for latitude/longitude and address enrichment  
-  - Plotly for maps/heatmaps in the UI
+  - Nominatim Geocoding API for latitude/longitude from city/state/country [file:1105]
+  - Plotly maps for location-based visualizations (optional) [file:1105]
 
 ---
 
 ## System Architecture
 
-The platform follows a three-tier architecture:
+The grievance portal follows a three-layer architecture: [file:1105]
 
-- **Frontend (Streamlit)** – submission form, complaint cards, support/“lend support” button, and metric dropdown to explore different ranking views.  
-- **Backend (FastAPI)** – processes incoming complaints, runs NLP and ML pipelines, updates PostgreSQL/pgvector, and exposes JSON APIs (`/submit_complaint`, `/load_complaints`, etc.).  
-- **Database Layer (PostgreSQL + pgvector)** – stores raw complaint text, metadata (city, state, country, timestamp), BERT embeddings, categories, severity and urgency scores, community support counts, and cluster IDs.
+- **Frontend (Streamlit):**
+  - Submission form for name, complaint text, city, state, country
+  - Complaint cards with category, urgency, and support button
+  - Metric dropdown to view different ranking modes (e.g., urgency, severity, support) [file:1105]
+- **Backend (FastAPI):**
+  - Receives submissions as JSON and writes to PostgreSQL
+  - Runs NLP, feature engineering, clustering, and severity calculation
+  - Exposes APIs for loading ranked complaints and updating support counts [file:1105]
+- **Database (PostgreSQL + pgvector):**
+  - Stores raw complaint data, geolocation, embeddings, categories, urgency, severity scores, support counts, and cluster IDs [file:1105]
 
-The architecture diagram in this repository illustrates:
-
-- Data flow from **Streamlit** → **FastAPI** → **PostgreSQL + pgvector**  
-- Background jobs for:
-  - Loading models on startup (BERT classifier, embedding model)  
-  - Nightly / periodic HDBSCAN clustering  
-  - Recomputing urgency and severity when new data arrives  
-- Integration with Nominatim (HTTP GET) for geocoding addresses.
-<img width="774" height="1315" alt="image" src="https://github.com/user-attachments/assets/5ec2bcf4-99d3-4a1e-8128-c35a9d3ea189" />
+<img width="774" height="1315" alt="image" src="https://github.com/user-attachments/assets/d6d5fc29-c922-44ba-8c7d-5da66b1e888b" />

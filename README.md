@@ -153,19 +153,19 @@ Developers can inspect rows using pgAdmin (as in the execution screenshots) to v
 - Open the displayed URL (e.g., `http://localhost:8501`) to use the grievance portal.
 
 ## Repository Structure
-├─ app.py # Streamlit frontend
-├─ main.py # FastAPI backend
-├─ clustering_system.py # Embedding, clustering, severity logic
-├─ data/ # Sample complaint data
-├─ assets/ # Architecture and execution screenshots
-│ ├─ architecture.png
-│ ├─ complaint-submission.png
-│ ├─ feature-engineering.png
-│ ├─ embeddings.png
-│ ├─ ranked-complaints.png
-│ ├─ severity-ui.png
-│ ├─ grievances-table.png
-│ ├─ embeddings-table.png
-│ └─ metrics-logs.png
-├─ requirements.txt
+├─ app.py # Streamlit frontend <br>
+├─ main.py # FastAPI backend <br>
+├─ clustering_system.py # Embedding, clustering, severity logic <br>
+├─ data/ # Sample complaint data <br>
+├─ assets/ # Architecture and execution screenshots <br>
+│ ├─ architecture.png <br>
+│ ├─ complaint-submission.png <br>
+│ ├─ feature-engineering.png <br>
+│ ├─ embeddings.png <br>
+│ ├─ ranked-complaints.png <br>
+│ ├─ severity-ui.png <br>
+│ ├─ grievances-table.png <br>
+│ ├─ embeddings-table.png <br>
+│ └─ metrics-logs.png <br>
+├─ requirements.txt <br>
 └─ README.md

@@ -50,12 +50,12 @@ The grievance portal follows a three-layer architecture: [file:1105]
 
 1. Complaint Submission
  1. A user opens the Streamlit portal and fills out the submission form:
- - Name
- - Complaint text
- - City, State, Country [file:1105]
+   - Name
+   - Complaint text
+   - City, State, Country [file:1105]
 2. The frontend sends a POST request to /SUBMIT_COMPLAINT on the FastAPI backend with this data. [file:1105]
 3. The backend:
- - Stores the complaint with a timestamp
- - Calls Nominatim to fetch latitude and longitude
- - Inserts a new row in the grievances table with text and metadata [file:1105]
+   - Stores the complaint with a timestamp
+   - Calls Nominatim to fetch latitude and longitude
+   - Inserts a new row in the grievances table with text and metadata [file:1105]
 <img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/5220c2e7-8b32-49aa-af2d-31a1d319ab7b" />

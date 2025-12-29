@@ -46,8 +46,7 @@ The grievance portal follows a three-layer architecture: [file:1105]
 
 <img width="774" height="1315" alt="image" src="https://github.com/user-attachments/assets/d6d5fc29-c922-44ba-8c7d-5da66b1e888b" />
 
-![System Architecture](Assets and Working)
-
+- **Assets and Working**
 1. Complaint Submission
  1. A user opens the Streamlit portal and fills out the submission form:
     - Name

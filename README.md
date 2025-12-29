@@ -142,7 +142,7 @@ Developers can inspect rows using pgAdmin (as in the execution screenshots) to v
 
 ## Getting Started
 
-- git clone https://github.com/<your-username>/grievance-portal.git
+- git clone https://github.com/AshlinJoelSizzin/Grievance_Portal.git
 - cd grievance-portal
 - pip install -r requirements.txt
 - Setup PostgreSQL with `pgvector` and create the `grievances` table (SQL schema provided in this repo).  
